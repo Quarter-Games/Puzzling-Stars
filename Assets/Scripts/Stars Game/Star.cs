@@ -1,19 +1,24 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 public class Star : MonoBehaviour
 {
-    private static Star selectedStar;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Collider2D StarCollider;
+    public static Star selectedStar;
     private static Star HoveredStar;
     private float timeMouseDown;
     private void OnMouseEnter()
     {
-        Debug.Log("OnPointerEnter");
+        //Debug.Log("OnPointerEnter");
         if (selectedStar == null) return;
         if (selectedStar == this) return;
 
         HoveredStar = this;
-        StarConnection.CreateConnection(new[] { selectedStar, HoveredStar });
+        var temp = selectedStar;
         selectedStar = this;
+        StarConnection.CreateConnection(new[] { temp, HoveredStar });
         HoveredStar = null;
     }
     private void OnMouseExit()
@@ -28,18 +33,19 @@ public class Star : MonoBehaviour
     {
         if (selectedStar == null)
         {
-            Debug.Log("OnBeginDrag");
+            //Debug.Log("OnBeginDrag");
             selectedStar = this;
         }
     }
     private void OnMouseUp()
     {
         if (selectedStar != this) return;
-        Debug.Log("OnEndDrag");
+        //Debug.Log("OnEndDrag");
         if (HoveredStar != null && selectedStar != null)
         {
             StarConnection.CreateConnection(new[] { selectedStar, HoveredStar });
         }
+        else if (selectedStar!=null) selectedStar = null;
     }
     private void OnMouseUpAsButton()
     {
@@ -50,6 +56,18 @@ public class Star : MonoBehaviour
     private void OnMouseDown()
     {
         timeMouseDown = Time.time;
+    }
+    public void Disable()
+    {
+        selectedStar = null;
+        HoveredStar = null;
+        spriteRenderer.color = Color.gray;
+        StarCollider.enabled = false;
+        enabled = false;
+    }
+    public List<ConnectionDef> ContainedIn()
+    {
+        return StarConnection.connections.Where(c => c.ConnectedStars.Contains(this)).Select(c => c.ConnectedStars).ToList();
     }
 
 }

@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class StarConnection : MonoBehaviour
 {
+    public static event System.Action<StarConnection> OnConnectionCreated;
+    public static event System.Action<StarConnection> OnConnectionDestroyed;
     public static List<StarConnection> connections = new List<StarConnection>();
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] PolygonCollider2D polygonCollider;
-    private List<Star> ConnectedStars;
+    public ConnectionDef ConnectedStars { get; private set; }
     private void Awake()
     {
         connections.Add(this);
@@ -39,13 +41,14 @@ public class StarConnection : MonoBehaviour
             return;
         }
         Vector3 vector3 = Quaternion.Euler(0, 0, 90) * (Stars[1].transform.position - Stars[0].transform.position).normalized;
-        vector3 *= (lineRenderer.startWidth/2);
-        ConnectedStars = new List<Star>(Stars);
+        vector3 *= (lineRenderer.startWidth / 2);
+        ConnectedStars = new(Stars[0], Stars[1]);
         lineRenderer.SetPosition(0, Stars[0].transform.position);
         lineRenderer.SetPosition(1, Stars[1].transform.position);
         polygonCollider.points = new Vector2[] {
             Stars[0].transform.position - vector3 - transform.position, Stars[1].transform.position - vector3 - transform.position,
             Stars[1].transform.position + vector3 - transform.position, Stars[0].transform.position + vector3 - transform.position };
+        OnConnectionCreated?.Invoke(this);
     }
     public static void ClearConnection(Star[] Stars)
     {
@@ -71,9 +74,15 @@ public class StarConnection : MonoBehaviour
     private void OnDestroy()
     {
         connections.Remove(this);
+        OnConnectionDestroyed?.Invoke(this);
     }
     private void OnMouseUpAsButton()
     {
-        ClearConnection(ConnectedStars.ToArray());
+        ClearConnection(new Star[] { ConnectedStars.FirstStar, ConnectedStars.SecondStar });
+    }
+    public void Disable()
+    {
+        polygonCollider.enabled = false;
+        enabled = false;
     }
 }
