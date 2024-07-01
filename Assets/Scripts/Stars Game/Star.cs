@@ -49,6 +49,7 @@ public class Star : MonoBehaviour
     }
     private void OnMouseUpAsButton()
     {
+        return;
         if (selectedStar != this) return;
         if (Time.time - timeMouseDown > 0.5f) return;
         StarConnection.ClearConnectionsFromStar(this);
