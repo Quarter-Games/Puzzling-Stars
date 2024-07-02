@@ -1,12 +1,14 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Constellation : MonoBehaviour
 {
     public bool isFinished;
     public List<ConnectionDef> Connections;
+    [SerializeField] SpriteRenderer spriteRenderer;
     private void OnDrawGizmos()
     {
         if (Connections == null) return;

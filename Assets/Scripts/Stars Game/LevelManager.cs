@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public static event Action OnLevelComplete;
     [SerializeField] List<Constellation> ConstellationList;
 
     private void Awake()
@@ -29,6 +31,11 @@ public class LevelManager : MonoBehaviour
                 Debug.Log("Constellation is complete");
                 constellation.DisableConstellation();
             }
+        }
+        if (ConstellationList.All(x => x.isFinished))
+        {
+            Debug.Log("All constellations are complete");
+            OnLevelComplete?.Invoke();
         }
     }
 

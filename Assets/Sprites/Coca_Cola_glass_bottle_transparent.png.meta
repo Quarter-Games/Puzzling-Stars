@@ -1,0 +1,197 @@
+fileFormatVersion: 2
+guid: d0e69f0be75792b4da069d3d2aae7d4d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7569563890948693300
+    second: Coca_Cola_glass_bottle_transparent_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: 0
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Coca_Cola_glass_bottle_transparent_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 33
+        width: 588
+        height: 1881
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 123, y: 683.5}
+        - {x: 189, y: 442.5}
+        - {x: 249, y: 194.5}
+        - {x: 288, y: -165.5}
+        - {x: 240, y: -481.5}
+        - {x: 294, y: -696.5}
+        - {x: 263, y: -872.5}
+        - {x: 24, y: -940.5}
+        - {x: -256, y: -887.5}
+        - {x: -284, y: -710.5}
+        - {x: -238, y: -506.5}
+        - {x: -294, y: -176.5}
+        - {x: -259, y: 197.5}
+        - {x: -212, y: 446.5}
+        - {x: -145, y: 692.5}
+        - {x: -150, y: 937.5}
+        - {x: 134, y: 928.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc221671fb183f690800000000000000
+      internalID: -7569563890948693300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: 277, y: -851}
+      - {x: 287, y: -631}
+      - {x: 246, y: -498}
+      - {x: 290, y: -172}
+      - {x: 263, y: 153}
+      - {x: 252, y: 226}
+      - {x: 161, y: 504}
+      - {x: 122, y: 767}
+      - {x: 137, y: 809}
+      - {x: 131, y: 933}
+      - {x: -150, y: 934}
+      - {x: -155, y: 805}
+      - {x: -137, y: 660}
+      - {x: -179.27457, y: 533.9972}
+      - {x: -240, y: 353}
+      - {x: -262.8866, y: 146.1405}
+      - {x: -292, y: -117}
+      - {x: -245, y: -464}
+      - {x: -287, y: -720}
+      - {x: -251, y: -872}
+      - {x: -3, y: -938}
+      - {x: 209, y: -903}
+    - - {x: -70, y: 793}
+      - {x: 61, y: 793}
+      - {x: 61, y: 853}
+      - {x: -70, y: 853}
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1d5fa4fbe3557594f8861ab55e4f67ad
+    internalID: 1734764749
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Coca_Cola_glass_bottle_transparent_0: -7569563890948693300
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
