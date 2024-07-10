@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d1a56a8c5ff0c3546b9e6c77a78d9299
+guid: e1e19b64c62a4284ea425701f1f8372d
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -145,7 +145,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      star material_0: -7092923241006236027
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
