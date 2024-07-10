@@ -9,6 +9,7 @@ public class Sticker : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     public static event Func<Image> DragImageStarted;
     [SerializeField] Image Sprite;
     public SnapObject RightPlace;
+    public Material WrongMaterial;
     public static Sticker CurrentDraged { get; private set; }
     Image DraggedImage;
     public Sticker CoppiedFrom;
@@ -102,11 +103,11 @@ public class Sticker : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     }
     public void ShowComplition()
     {
-        Sprite.color = Color.green;
+        Sprite.material = null;
     }
     public void ShowIncomplition()
     {
-        Sprite.color = Color.red;
+        Sprite.material = WrongMaterial;
     }
     public void OnPointerDown(PointerEventData eventData)
     {

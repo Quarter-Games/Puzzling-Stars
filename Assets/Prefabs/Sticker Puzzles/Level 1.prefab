@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 2193471638023386265}
   RightPlace: {fileID: 4956713470380058063}
+  WrongMaterial: {fileID: 2100000, guid: 6c022d4e1172111438e57f8250c658b6, type: 2}
   CoppiedFrom: {fileID: 0}
   SnappedTo: {fileID: 0}
 --- !u!1 &912419769231043660
@@ -343,6 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 769434850947312571}
   RightPlace: {fileID: 3162215465123169270}
+  WrongMaterial: {fileID: 2100000, guid: 6c022d4e1172111438e57f8250c658b6, type: 2}
   CoppiedFrom: {fileID: 0}
   SnappedTo: {fileID: 0}
 --- !u!1 &4144183385453631086
@@ -631,6 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 2896195841363703819}
   RightPlace: {fileID: 6314447715083405840}
+  WrongMaterial: {fileID: 2100000, guid: 6c022d4e1172111438e57f8250c658b6, type: 2}
   CoppiedFrom: {fileID: 0}
   SnappedTo: {fileID: 0}
 --- !u!1 &8193184257374794133
