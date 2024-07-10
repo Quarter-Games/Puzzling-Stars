@@ -55,7 +55,7 @@ MonoBehaviour:
   connections:
   - {fileID: 6350014152452413164}
   ZoomInPoint: {fileID: 6145640825178275507}
-  SceneName: Level 1
+  settings: {fileID: 11400000, guid: ff1817355e5654d4bbc9128a2babcacb, type: 2}
 --- !u!60 &893864911850648223
 PolygonCollider2D:
   m_ObjectHideFlags: 0
