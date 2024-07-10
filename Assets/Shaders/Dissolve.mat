@@ -58,7 +58,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Dissolve_Amount: 0.497
+    - _Dissolve_Amount: 0.583
     - _Dissolve_Scale: 15
     - _Outline_Tickness: 0.06
     - _Spiral_Strength: 8
