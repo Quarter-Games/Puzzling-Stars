@@ -5,23 +5,23 @@ abstract public class SnapObject : MonoBehaviour, IPointerEnterHandler, IPointer
 {
     public static SnapObject CurrentSnapObject;
     [SerializeField] protected Collider snapCollider;
-    Sticker SnappedSticker;
+    public Sticker RightSticker;
+    [SerializeField] Sticker SnappedSticker;
 
 
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
+        if (SnappedSticker != null) return;
         if (Sticker.CurrentDraged == null) return;
+        if (CurrentSnapObject != null) return;
         CurrentSnapObject = this;
     }
 
     virtual public void OnPointerExit(PointerEventData eventData)
     {
+        if (SnappedSticker != null) return;
         if (Sticker.CurrentDraged == null) return;
-        if (CurrentSnapObject != this)
-        {
-            //Debug.LogError("Snap Colliders Are overlapping!");
-            return;
-        }
+        if (CurrentSnapObject != this) return;
         CurrentSnapObject = null;
 
     }
@@ -31,6 +31,8 @@ abstract public class SnapObject : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         snapCollider.enabled = false;
         SnappedSticker = sticker;
+        enabled = false;
+        CurrentSnapObject = null;
     }
     virtual public void UnSnap()
     {
@@ -40,5 +42,12 @@ abstract public class SnapObject : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             CurrentSnapObject = null;
         }
+        enabled = true;
+    }
+    private void OnDrawGizmos()
+    {
+        if (RightSticker == null) return;
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, RightSticker.transform.position);
     }
 }

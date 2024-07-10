@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Sticker : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerDownHandler
+public class Sticker : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
 {
     public static event Func<Image> DragImageStarted;
     [SerializeField] Image Sprite;
@@ -41,7 +41,7 @@ public class Sticker : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     public void OnEndDrag(PointerEventData eventData)
     {
         if (CurrentDraged != this) return;
-        if (SnapObject.CurrentSnapObject != null)
+        if (SnapObject.CurrentSnapObject != null && SnapObject.CurrentSnapObject != SnappedTo)
         {
             var copy = Instantiate(this);
             copy.Snap(this, SnapObject.CurrentSnapObject);
