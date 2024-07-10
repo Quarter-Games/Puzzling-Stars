@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -5,8 +6,7 @@ abstract public class SnapObject : MonoBehaviour, IPointerEnterHandler, IPointer
 {
     public static SnapObject CurrentSnapObject;
     [SerializeField] protected Collider snapCollider;
-    public Sticker RightSticker;
-    [SerializeField] Sticker SnappedSticker;
+    public Sticker SnappedSticker;
 
 
     virtual public void OnPointerEnter(PointerEventData eventData)
@@ -16,7 +16,6 @@ abstract public class SnapObject : MonoBehaviour, IPointerEnterHandler, IPointer
         if (CurrentSnapObject != null) return;
         CurrentSnapObject = this;
     }
-
     virtual public void OnPointerExit(PointerEventData eventData)
     {
         if (SnappedSticker != null) return;
@@ -43,11 +42,5 @@ abstract public class SnapObject : MonoBehaviour, IPointerEnterHandler, IPointer
             CurrentSnapObject = null;
         }
         enabled = true;
-    }
-    private void OnDrawGizmos()
-    {
-        if (RightSticker == null) return;
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, RightSticker.transform.position);
     }
 }

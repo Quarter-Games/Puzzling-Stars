@@ -8,7 +8,7 @@ public class MainMenuConstallation : MonoBehaviour
     public static event Action<MainMenuConstallation> OnConstallationClick;
     [SerializeField] List<MainMenuConnection> connections;
     public Transform ZoomInPoint;
-    public string SceneName;
+    public LevelSettings settings;
     private void OnEnable()
     {
         OnMouseExit();

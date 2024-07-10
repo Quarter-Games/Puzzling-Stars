@@ -1,7 +1,9 @@
 {
     "name": "QuarterGames.StaryNight.MainMenu",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:155cdf1d2fbf82340b6657f91f58a60a"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

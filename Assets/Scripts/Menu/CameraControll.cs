@@ -30,7 +30,7 @@ public class CameraControll : MonoBehaviour
     private IEnumerator ZoomIn_Coroutine(MainMenuConstallation constallation)
     {
         isRotating = true;
-        var loadingOperation = SceneManager.LoadSceneAsync(constallation.SceneName);
+        var loadingOperation = SceneManager.LoadSceneAsync(constallation.settings.SceneName);
         loadingOperation.allowSceneActivation = false;
         Vector3 StartLookAtPoint = _camera.transform.position + _camera.transform.forward * 30;
         float timer = 0;
