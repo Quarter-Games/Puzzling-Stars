@@ -11,7 +11,9 @@ public class StarConnection : MonoBehaviour
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] PolygonCollider2D polygonCollider;
     public ConnectionDef ConnectedStars { get; private set; }
-    private void Awake()
+    private Star star0;
+    private Star star1;
+    private void OnEnable()
     {
         connections.Add(this);
     }
@@ -40,15 +42,23 @@ public class StarConnection : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        Vector3 vector3 = Quaternion.Euler(0, 0, 90) * (Stars[1].transform.position - Stars[0].transform.position).normalized;
-        vector3 *= (lineRenderer.startWidth / 2);
         ConnectedStars = new(Stars[0], Stars[1]);
-        lineRenderer.SetPosition(0, Stars[0].transform.position);
-        lineRenderer.SetPosition(1, Stars[1].transform.position);
-        polygonCollider.points = new Vector2[] {
-            Stars[0].transform.position - vector3 - transform.position, Stars[1].transform.position - vector3 - transform.position,
-            Stars[1].transform.position + vector3 - transform.position, Stars[0].transform.position + vector3 - transform.position };
+        star0 = ConnectedStars.FirstStar;
+        star1 = ConnectedStars.SecondStar;
+        UpdateVisual();
         OnConnectionCreated?.Invoke(this);
+    }
+    [ContextMenu("Update Visual")]
+    public void UpdateVisual()
+    {
+
+        Vector3 vector3 = Quaternion.Euler(0, 0, 90) * (star1.transform.position - star0.transform.position).normalized;
+        vector3 *= (lineRenderer.startWidth / 2);
+        lineRenderer.SetPosition(0, star0.transform.position);
+        lineRenderer.SetPosition(1, star1.transform.position);
+        polygonCollider.points = new Vector2[] {
+            star0.transform.position - vector3 - transform.position, star1.transform.position - vector3 - transform.position,
+            star1.transform.position + vector3 - transform.position, star0.transform.position + vector3 - transform.position };
     }
     public static void ClearConnection(Star[] Stars)
     {
@@ -71,7 +81,7 @@ public class StarConnection : MonoBehaviour
             Destroy(connection.gameObject);
         }
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         connections.Remove(this);
         OnConnectionDestroyed?.Invoke(this);

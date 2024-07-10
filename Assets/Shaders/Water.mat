@@ -51,8 +51,25 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Depth_Fade: 4
+    - _Foam_Cutoff: 1.5
+    - _Foam_Depth: 1
+    - _Foam_Scale: 10
+    - _NormalStrength: 0.25
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    - _Refaction_Strength: 0.898
+    - _Refraction_Wave_Size: 5
+    - _SeacondaryRefractionWaveSize: 15
+    - _Wave_Ampitude: 0.5
+    - _Wave_Frequency: 2
+    - _Wave_Speed: 1
+    m_Colors:
+    - _Deep_Color: {r: 0.0505304, g: 0.09998578, b: 0.5698112, a: 0.7254902}
+    - _Foam_Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Foam_Speed: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _Refraction_Speed: {r: 1, g: 1, b: 0, a: 0}
+    - _Shallow_Color: {r: 0.17478818, g: 0.3672501, b: 0.6301887, a: 0.6156863}
+    - _Wave_Direction: {r: 0.05, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

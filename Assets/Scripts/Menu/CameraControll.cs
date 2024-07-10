@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 public class CameraControll : MonoBehaviour
 {
+    public static event Action<LevelSettings> OnLevelLoad;
     private bool isRotating = false;
     [SerializeField] Camera _camera;
     [SerializeField] float ZoomedInFieldOfView;
     [SerializeField] float LoadingTime;
     [SerializeField] Image FadeInPanel;
+    [SerializeField] GameObject Book;
 
     private void OnEnable()
     {
@@ -29,7 +31,7 @@ public class CameraControll : MonoBehaviour
     private IEnumerator ZoomIn_Coroutine(MainMenuConstallation constallation)
     {
         isRotating = true;
-        var loadingOperation = SceneManager.LoadSceneAsync(constallation.SceneName);
+        var loadingOperation = SceneManager.LoadSceneAsync(constallation.settings.SceneName);
         loadingOperation.allowSceneActivation = false;
         Vector3 StartLookAtPoint = _camera.transform.position + _camera.transform.forward * 30;
         float timer = 0;
@@ -43,27 +45,10 @@ public class CameraControll : MonoBehaviour
         }
         var scene = SceneManager.GetActiveScene();
         loadingOperation.allowSceneActivation = true;
-        //SceneManager.LoadScene(constallation.SceneName);
         isRotating = false;
+        OnLevelLoad?.Invoke(constallation.settings);
     }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            StartCoroutine(RotateCamera());
-        }
-    }
-    private IEnumerator RotateCamera()
-    {
-        while (Input.GetMouseButton(1))
-        {
-            transform.Rotate(Vector3.up, Input.GetAxis("Mouse X"));
-            transform.Rotate(Vector3.right, -Input.GetAxis("Mouse Y"));
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
-            yield return null;
-        }
-    }
     public bool Rotate(MainMenuRotationButton mainMenuRotation)
     {
         if (isRotating) return false;
