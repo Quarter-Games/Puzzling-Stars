@@ -474,6 +474,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5247242053963366306, guid: 3d26f1a4cdef1f94bad69f4578cf09cd, type: 3}
+      propertyPath: MovableSticker
+      value: 
+      objectReference: {fileID: 499561506704235053}
     - target: {fileID: 5658902317283435284, guid: 3d26f1a4cdef1f94bad69f4578cf09cd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
