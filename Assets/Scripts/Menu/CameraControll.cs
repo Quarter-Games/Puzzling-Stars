@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CameraControll : MonoBehaviour
 {
+    public static event Action<LevelSettings> OnLevelLoad;
     private bool isRotating = false;
     [SerializeField] Camera _camera;
     [SerializeField] float ZoomedInFieldOfView;
@@ -44,8 +45,8 @@ public class CameraControll : MonoBehaviour
         }
         var scene = SceneManager.GetActiveScene();
         loadingOperation.allowSceneActivation = true;
-        //SceneManager.LoadScene(constallation.SceneName);
         isRotating = false;
+        OnLevelLoad?.Invoke(constallation.settings);
     }
 
     public bool Rotate(MainMenuRotationButton mainMenuRotation)

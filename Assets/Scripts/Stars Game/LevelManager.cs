@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        ConstellationList = FindObjectsByType<Constellation>(FindObjectsSortMode.None).ToList();
+        ConstellationList = FindObjectsByType<Constellation>(FindObjectsSortMode.None).Where(x=>x.enabled).ToList();
     }
     private void OnEnable()
     {

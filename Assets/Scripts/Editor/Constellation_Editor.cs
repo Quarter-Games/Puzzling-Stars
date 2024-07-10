@@ -48,4 +48,16 @@ public class Constellation_Editor : Editor
             }
         }
     }
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        if (GUILayout.Button("Copy"))
+        {
+            (target as Constellation).CreateFinishedCopy();
+        }
+        if (GUILayout.Button("Refresh"))
+        {
+            (target as Constellation).Refresh();
+        }
+    }
 }

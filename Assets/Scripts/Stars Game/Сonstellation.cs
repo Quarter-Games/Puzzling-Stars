@@ -82,6 +82,26 @@ public class Constellation : MonoBehaviour
             StarConnection.connections.Find(c => c.ConnectedStars == connection).Disable();
         }
     }
+    [ContextMenu("Copy")]
+    public void CreateFinishedCopy()
+    {
+        var temp = Instantiate(this);
+        foreach (var con in temp.Connections)
+        {
+            var connection = StarConnection.CreateConnection(new[] { con.FirstStar, con.SecondStar });
+            connection.Disable();
+            connection.transform.SetParent(temp.transform);
+        }
+        foreach (var star in temp.GetComponentsInChildren<Star>())
+        {
+            star.Disable();
+        }
+    }
+    [ContextMenu("Refresh")]
+    public void Refresh()
+    {
+        GetComponentsInChildren<StarConnection>().ToList().ForEach(x => x.UpdateVisual());
+    }
 }
 [Serializable]
 public class ConnectionDef
