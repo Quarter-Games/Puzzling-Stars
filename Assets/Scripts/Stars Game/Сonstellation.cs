@@ -138,12 +138,12 @@ public class Constellation : MonoBehaviour
         gameObject.SetActive(true);
         if (gameObject.TryGetComponent<Image>(out var image))
         {
-            Debug.Log("lol");
+            image.material.enableInstancing = true;
+            image.material = new Material(StartResolveMat);
             float t = 0;
             while (t < 1f)
             {
                 t += Time.fixedDeltaTime;
-                
                 image.material.Lerp(StartResolveMat, EndResolveMat, t);
                 yield return new WaitForFixedUpdate();
             }

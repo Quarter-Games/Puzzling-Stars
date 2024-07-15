@@ -63,10 +63,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMask: 15
-    - _Dissolve_Amount: 0.3
-    - _Dissolve_Scale: 15
-    - _Outline_Tickness: 0.06
-    - _Spiral_Strength: 8
+    - _Dissolve_Amount: 0
+    - _Dissolve_Scale: 500
+    - _Outline_Tickness: 0.014
+    - _Spiral_Strength: 0
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
