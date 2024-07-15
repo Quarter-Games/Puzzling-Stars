@@ -91,9 +91,9 @@ Material:
     - _ColorMask: 15
     - _EMISSION_WEIGHT: 1
     - _EnableExternalAlpha: 0
-    - _HorizonBLend: 4.6
+    - _HorizonBLend: 7.1
     - _METALNESS: 0
-    - _Nadir: 1
+    - _Nadir: 0.01
     - _QueueControl: 0
     - _QueueOffset: 0
     - _REFLECTIONS_IOR: 1.52
@@ -107,16 +107,16 @@ Material:
     - _TRANSPARENCY: 0
     - _UIMaskSoftnessX: 1
     - _UIMaskSoftnessY: 1
-    - _Zenith: 1
+    - _Zenith: 2.4
     m_Colors:
     - _BASE_COLOR: {r: 1, g: 1, b: 1, a: 1}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 0}
-    - _Ground_Color: {r: 0.32075468, g: 0.22936985, b: 0.24556828, a: 0}
-    - _Horizon_blend_color: {r: 0.29487357, g: 0.47637025, b: 0.6226415, a: 0}
+    - _Ground_Color: {r: 0.6301887, g: 0.3174724, b: 0.38423198, a: 0}
+    - _Horizon_blend_color: {r: 0.4415095, g: 0.28906375, b: 0.4415095, a: 0}
     - _REFLECTIONS_COLOR: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Sky_Color: {r: 0.22465642, g: 0.32794562, b: 0.5245282, a: 0}
+    - _Sky_Color: {r: 0.40664288, g: 0.5273716, b: 0.7509433, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
