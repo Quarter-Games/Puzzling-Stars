@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Constellation : MonoBehaviour
 {
@@ -86,6 +87,7 @@ public class Constellation : MonoBehaviour
     public void CreateFinishedCopy()
     {
         var temp = Instantiate(this);
+        temp.gameObject.AddComponent<RectTransform>();
         foreach (var con in temp.Connections)
         {
             var connection = StarConnection.CreateConnection(new[] { con.FirstStar, con.SecondStar });
@@ -95,7 +97,32 @@ public class Constellation : MonoBehaviour
         foreach (var star in temp.GetComponentsInChildren<Star>())
         {
             star.Disable();
+            star.transform.localPosition = star.transform.localPosition * 100;
         }
+        foreach (var sprite in temp.GetComponentsInChildren<SpriteRenderer>(true))
+        {
+            var obj = sprite.gameObject;
+            var image = sprite.sprite;
+            DestroyImmediate(sprite);
+            var imagerenderer = obj.AddComponent<Image>();
+            imagerenderer.sprite = image;
+            imagerenderer.SetNativeSize();
+        }
+        foreach (var objec in temp.GetComponentsInChildren<Transform>(true))
+        {
+            objec.gameObject.layer = 5;
+        }
+        foreach (var layout in FindObjectsByType<VerticalLayoutGroup>(FindObjectsSortMode.None))
+        {
+            if (layout.CompareTag("EditorOnly"))
+            {
+                temp.transform.SetParent(layout.transform);
+                temp.transform.localScale = Vector3.one * .75f;
+                break;
+            }
+        }
+        temp.Refresh();
+        temp.enabled = false;
     }
     [ContextMenu("Refresh")]
     public void Refresh()
