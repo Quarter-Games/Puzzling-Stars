@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,9 +8,14 @@ using UnityEngine.UI;
 
 public class Constellation : MonoBehaviour
 {
+    public event Action<Constellation> OnConstellationComplete;
     public bool isFinished;
     public List<ConnectionDef> Connections;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Image imageInsteadSprite;
+    public Constellation CopiedFrom;
+    [SerializeField] Material StartResolveMat;
+    [SerializeField] Material EndResolveMat;
     private void OnDrawGizmos()
     {
         if (Connections == null) return;
@@ -82,6 +88,67 @@ public class Constellation : MonoBehaviour
             connection.SecondStar.Disable();
             StarConnection.connections.Find(c => c.ConnectedStars == connection).Disable();
         }
+        OnConstellationComplete?.Invoke(this);
+    }
+    public void LeaveOnlyImage(Constellation constellation)
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            var child = transform.GetChild(i);
+            if (child.gameObject != imageInsteadSprite.gameObject)
+            {
+                StartCoroutine(TurnOffStarsOrLines(child.gameObject));
+            }
+            else
+            {
+                StartCoroutine(TurnOnImage(child.gameObject));
+
+            }
+        }
+        constellation.OnConstellationComplete -= LeaveOnlyImage;
+    }
+    private IEnumerator TurnOffStarsOrLines(GameObject gameObject)
+    {
+        if (gameObject.transform.GetChild(0).gameObject.TryGetComponent<Image>(out var image))
+        {
+            float t = 0;
+            while (t < 1f)
+            {
+                t += Time.fixedDeltaTime;
+                image.color = Color.Lerp(Color.white, Color.clear, t);
+                yield return new WaitForFixedUpdate();
+            }
+
+        }
+        else if (gameObject.transform.GetChild(0).gameObject.TryGetComponent<LineRenderer>(out var lineRenderer))
+        {
+            float t = 0;
+            while (t < 1f)
+            {
+                t += Time.fixedDeltaTime;
+                lineRenderer.startColor = Color.Lerp(Color.white, Color.clear, t);
+                lineRenderer.endColor = Color.Lerp(Color.white, Color.clear, t);
+                yield return new WaitForFixedUpdate();
+            }
+        }
+        DestroyImmediate(gameObject);
+    }
+    private IEnumerator TurnOnImage(GameObject gameObject)
+    {
+        gameObject.SetActive(true);
+        if (gameObject.TryGetComponent<Image>(out var image))
+        {
+            Debug.Log("lol");
+            float t = 0;
+            while (t < 1f)
+            {
+                t += Time.fixedDeltaTime;
+                
+                image.material.Lerp(StartResolveMat, EndResolveMat, t);
+                yield return new WaitForFixedUpdate();
+            }
+
+        }
     }
     [ContextMenu("Copy")]
     public void CreateFinishedCopy()
@@ -107,6 +174,7 @@ public class Constellation : MonoBehaviour
             var imagerenderer = obj.AddComponent<Image>();
             imagerenderer.sprite = image;
             imagerenderer.SetNativeSize();
+            if (obj.transform.childCount == 0 && obj.transform.parent.childCount >= 2) temp.imageInsteadSprite = imagerenderer;
         }
         foreach (var objec in temp.GetComponentsInChildren<Transform>(true))
         {
@@ -123,6 +191,7 @@ public class Constellation : MonoBehaviour
         }
         temp.Refresh();
         temp.enabled = false;
+        temp.CopiedFrom = this;
     }
     [ContextMenu("Refresh")]
     public void Refresh()
