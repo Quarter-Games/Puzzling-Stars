@@ -6,14 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main Menu/Loading Scene.unity
-    guid: c38519688abba9f488a5a570f67fd54a
-  - enabled: 1
     path: Assets/Scenes/Main Menu/Main Menu.unity
     guid: a944981ea6486f241b1b6b13e7c785eb
   - enabled: 1
     path: Assets/Scenes/Stars Game/Level 1.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    guid: b7eb6f97fd5c6124c9869e9097c06735
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

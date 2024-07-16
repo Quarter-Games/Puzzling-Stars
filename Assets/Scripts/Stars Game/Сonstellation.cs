@@ -182,7 +182,7 @@ public class Constellation : MonoBehaviour
         }
         foreach (var layout in FindObjectsByType<VerticalLayoutGroup>(FindObjectsSortMode.None))
         {
-            if (layout.CompareTag("EditorOnly"))
+            if (layout.CompareTag("Constellation Parent"))
             {
                 temp.transform.SetParent(layout.transform);
                 temp.transform.localScale = Vector3.one * .75f;

@@ -19,8 +19,15 @@ public class PauseMenu : MonoBehaviour
     private void OnEnable()
     {
         LevelManager.OnLevelComplete += OnLevelComplete;
+        Debug.Log("Pause Menu On Awake");
+        Debug.Log($"Child Count is: {transform.childCount}");
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Debug.Log(transform.GetChild(i).name);
+        }
         foreach (var constell in GetComponentsInChildren<Constellation>(true))
         {
+            Debug.Log(constell.name);
             constell.CopiedFrom.OnConstellationComplete += constell.LeaveOnlyImage;
         }
     }
@@ -68,7 +75,7 @@ public class PauseMenu : MonoBehaviour
         {
             var temp = images.Find(x => x.GetComponent<Image>().sprite == sticker.sprite);
             stickersToImages.Add(sticker.GetComponent<RectTransform>(), temp.GetComponent<RectTransform>());
-            temp.transform.SetParent(sticker.transform.parent,true);
+            temp.transform.SetParent(sticker.transform.parent, true);
             temp.AddComponent<LayoutElement>().ignoreLayout = true;
         }
         float timer2 = Timer / 2;
