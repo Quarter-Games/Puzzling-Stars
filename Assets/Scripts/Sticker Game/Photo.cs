@@ -9,6 +9,7 @@ public class Photo : MonoBehaviour
 {
     [SerializeField] List<Sticker> StickersToFinish;
     [SerializeField] List<SnapObject> SnapObjects;
+    [SerializeField] GameObject ExitButton;
     public Image MovableSticker;
     public static bool attempted;
     private void OnEnable()
@@ -27,7 +28,7 @@ public class Photo : MonoBehaviour
             attempted = true;
             if (SnapObjects.Where(x=>x.SnappedSticker!=null).All(x => x.SnappedSticker.RightPlace == x))
             {
-                Debug.Log("Every Sticker is placed correctly");
+                ExitButton.SetActive(true);
             }
         }
     }
